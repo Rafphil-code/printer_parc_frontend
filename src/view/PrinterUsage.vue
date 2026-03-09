@@ -21,6 +21,12 @@
                     <td class="p-2 border border-gray-300 items-center justifey-center text-center">5%</td>
                     <td class="p-2 border border-gray-300 items-center justifey-center text-center">09/03/26</td>
                 </tr>
+                <tr>
+                    <td class="p-2 border border-gray-300 items-center justifey-center text-center">C2630 IR</td>
+                    <td class="p-2 border border-gray-300 items-center justifey-center text-center">150 Pages</td>
+                    <td class="p-2 border border-gray-300 items-center justifey-center text-center">5%</td>
+                    <td class="p-2 border border-gray-300 items-center justifey-center text-center">09/03/26</td>
+                </tr>
                 </tbody>
             </table>
         </div>
