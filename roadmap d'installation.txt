@@ -1,0 +1,5 @@
+installer vite avec : npm create vite@latest print-park-frontend -- --template vue
+installer vue 3 avec vite avec les choix en sélectionnat.
+Installer tailwind comme plugin : npm install -D tailwindcss @tailwindcss/vite
+Ajouter tailwindcss() comme plugin dans vite.config.js
+importer @import "tailwindcss"; dans le css de base src/style
