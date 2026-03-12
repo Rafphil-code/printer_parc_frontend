@@ -2,7 +2,7 @@
   <div class="p-4">
     <h1 class="text-2xl font-bold text-center">GESTION DES IMPRIMANTES</h1>
     <div class="justify-center items-center mx-auto p-2 m-6">
-      <p class="text-2xl"> Içi vous pouvez gérer avec aisance toutes vos imprimantes </p>
+      <p class="text-2xl text-center"> Içi vous pouvez gérer avec aisance toutes vos imprimantes </p>
     </div>
     <table class="table-auto w-full border-collapse">
       <thead>
