@@ -19,7 +19,7 @@
             </div>
             <div class="flex gap-2 items-center">
                 <button @click="show_some_filter(filters.tri)" class="rounded-lg font-semibold bg-indigo-600 hover:bg-indigo-800 cursor-pointer text-white p-2">Trier</button>
-                <select v-model="filter_criterias.order_by" v-if="show_tri" class=" p-2 cursor-pointer bg-gray-200 focus:outline-none" name="" id="">
+                <select v-model="filter_criterias.order_by" v-if="show_tri" class=" p-2 cursor-pointer bg-gray-200 focus:outline-none" name="" id="1">
                     <option v-for="(value,key) in options" class="bg-indigo-200" :value="key"> {{ value }} </option>
                 </select>
             </div>
@@ -38,12 +38,13 @@
                     <th class="border border-gray-300 p-2 bg-indigo-100">Jour</th>
                 </thead>
                 <tbody>
-                    <tr v-for="el in stats">
-                        <td class="border border-gray-300 p-2 text-center font-semibold"> {{ el.printer_name }} </td>
+                    <tr class="odd:bg-white even:bg-indigo-50" v-for="el in stats">
+                        <td class="border border-gray-300 p-2  font-semibold"> {{ el.printer_name }} </td>
                         <td class="border border-gray-300 p-2 text-center font-semibold"> {{ el.printed_count }} </td>
                         <td class="border border-gray-300 p-2 text-center font-semibold">
                             <div class="flex flex-col text-left">
-                                <p v-for="(value, key) in el.uses"> {{ key }} : {{ value }} % </p>
+                                <p :class="{'text-blue-500': key.includes('Cyan'), 'text-yellow-500': key.includes('Yellow'), 'text-black-500': key.includes('Black'), 'text-red-700': key.includes('Magenta')}"
+                                 v-for="(value, key) in el.uses"> {{ key }} : {{ value }} % </p>
                             </div>
                         </td>
                         <td class="border border-gray-300 p-2 text-center font-semibold"> {{ el.date_check }} </td>

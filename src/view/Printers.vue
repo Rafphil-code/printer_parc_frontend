@@ -7,13 +7,13 @@
     <table class="table-auto w-full border-collapse">
       <thead>
         <tr>
-          <th class="border border-gray-300 px-4 py-2 bg-gray-100">Imprimantes</th>
-          <th class="border border-gray-300 px-4 py-2 bg-gray-100">Address IP</th>
-          <th class="border border-gray-300 px-4 py-2 bg-gray-100">Poll</th>
-          <th class="border border-gray-300 px-4 py-2 bg-gray-100">Détails</th>
-          <th class="border border-gray-300 px-4 py-2 bg-gray-100">Consumables</th>
-          <th class="border border-gray-300 px-4 py-2 bg-gray-100">Modifier</th>
-          <th class="border border-gray-300 px-4 py-2 bg-gray-100">Supprimer</th>
+          <th class="border border-gray-300 p-2 bg-indigo-100">Imprimantes</th>
+          <th class="border border-gray-300 p-2 bg-indigo-100">Address IP</th>
+          <th class="border border-gray-300 p-2 bg-indigo-100">Poll</th>
+          <th class="border border-gray-300 p-2 bg-indigo-100">Détails</th>
+          <th class="border border-gray-300 p-2 bg-indigo-100">Consumables</th>
+          <th class="border border-gray-300 p-2 bg-indigo-100">Modifier</th>
+          <th class="border border-gray-300 p-2 bg-indigo-100">Supprimer</th>
         </tr>
       </thead>
       <tbody>
@@ -31,7 +31,7 @@
           <td class="border border-gray-300 px-2 flex gap-2 text-center py-2">
             <button @click="open_history(item)" class="cursor-pointer  px-4 py-2 text-sm font-medium text-white bg-indigo-600 rounded-lg 
             hover:bg-indigo-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors duration-300">Voir les consumables</button>
-            <button @click="open_history(item)" class="cursor-pointer  px-4 py-2 text-sm font-medium text-white bg-indigo-600 rounded-lg 
+            <button @click="open_replacement(item)" class="cursor-pointer  px-4 py-2 text-sm font-medium text-white bg-indigo-600 rounded-lg 
             hover:bg-indigo-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors duration-300">Remplacer</button>
           </td>
           <td class="border border-gray-300 px-2 text-center py-2">
@@ -51,6 +51,7 @@
   <ModalDetail @close="close_details"  :printer="modal_printer" :show="show_details" />
   <PrinterConsumablesInfo @close="close_history" :printer="modal_printer" :show="show_history"  />
   <PrinterUpdate @close="close_update" @submit="update_printer" :printer="modal_printer" :models="models" :show="show_update" />
+  <ConsReplacement @close="close_replacement" @submit="replacement_validation" :printer="modal_printer" :show = "show_replacement" />
   </div>
 </template>
 
@@ -63,6 +64,8 @@ import { getmodels } from '../api/models';
 import { updatePrinter } from '../api/printers';
 import PrinterConsumablesInfo from '../components/PrinterConsumablesInfo.vue';
 import { pollPrinter } from '../api/conumables';
+import ConsReplacement from '../components/ConsReplacement.vue';
+import { replacecons } from '../api/stock_and_mouvements';
 const printers = ref()
 const models = ref() 
 onMounted(
@@ -75,6 +78,7 @@ const modal_printer = ref()
 const show_details = ref(false)
 const show_history = ref(false)
 const show_update = ref(false)
+const show_replacement = ref(false)
 
 
 
@@ -90,8 +94,17 @@ const open_update = (printer) => {
   show_update.value = true
   modal_printer.value = printer
 }
+
+const open_replacement = (printer) => {
+  show_replacement.value = true
+  modal_printer.value = printer
+}
 const close_update = () => {
   show_update.value = false
+}
+
+const close_replacement = () => {
+  show_replacement.value = false
 }
 
 const open_history = (printer) => {
@@ -108,6 +121,13 @@ const update_printer = async (printer) => {
   const result_of_updating = await updatePrinter(printer.id, printer)
   printers.value = await getprinters()
   console.log(result_of_updating)
+}
+
+const replacement_validation = async (replacement_dict) => {
+  show_replacement.value = false
+  console.log(replacement_dict)
+  const result = await replacecons(replacement_dict)
+  console.log(result)
 }
 
 const poll_printer = async (printer) => {

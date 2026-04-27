@@ -28,7 +28,7 @@ const menu = [
   { path: '/dashboard',              icon: '', label: 'Tableau de bord' },
   { path: '/printers',   icon: '', label: 'Imprimantes' },
   { path: '/alerts',       icon: '', label: 'Alertes' },
-  { path: '/stock',         icon: '', label: 'Stock' },
+  { path: '/stock',         icon: '', label: 'Stock et Mouvements' },
   { path: '/reports',      icon: '', label: 'Usage Reports' },
   { path: '/settings',      icon: '', label: 'Réglages' },
   { path: '/profil',        icon: '', label: 'Profil' },

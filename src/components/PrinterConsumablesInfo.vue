@@ -26,7 +26,7 @@ const cons_info = ref()
 watch( () => props.printer, async (newPrinter) => {
   if(newPrinter){
     cons_info.value = await getConsumables(newPrinter.id)
-    console.log(cons_info.value)
+    
   }
 })
 

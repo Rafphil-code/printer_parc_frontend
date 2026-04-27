@@ -5,6 +5,11 @@ export const getConsumables = async (printer_id) => {
     return response.data
 }
 
+export const getConsumableswithID = async (printer_id) => {
+    const response = await api.get(`/consumables/withid/${printer_id}`)
+    return response.data
+}
+
 export const pollPrinter = async (printer_id) => {
     const response = await api.get(`/consumables/polling/printers/${printer_id}`)
     return response.data
