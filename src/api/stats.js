@@ -6,5 +6,6 @@ export const getStats = async (date_start, date_end, order_by, printer_name) => 
         url += `&printer_name=${printer_name}`
     }
     const result = await api.get(url)
+    console.log(result.data)
     return result.data
 }

@@ -6,15 +6,15 @@
         </div>
 
         <div class="flex gap-2 p-2">
-            <div class="bg-blue-500 rounded-sm font-bold">
+            <div class="bg-indigo-700 rounded-sm font-bold">
                 <button @click="show('A')" class="text-white p-2 cursor-pointer hover:gb-">MOUVEMENTS DE STOCK</button>
             </div>
-            <div class="bg-blue-500 rounded-sm font-bold">
+            <div class="bg-indigo-700 rounded-sm font-bold">
                 <button @click="show('B')" class="text-white p-2 cursor-pointer hover:gb-">REMPLACEMENT DE CARTOUCHE</button>
             </div>
 
-            <div class="bg-blue-500 rounded-sm font-bold">
-                <button @click="show('B')" class="text-white p-2 cursor-pointer hover:gb-">STOCK</button>
+            <div class="bg-indigo-700 rounded-sm font-bold">
+                <button @click="show('C')" class="text-white p-2 cursor-pointer hover:gb-">STOCK</button>
             </div>
 
             <div class="bg-green-500 rounded-sm font-bold">
@@ -36,12 +36,14 @@
 import { ref } from 'vue';
 import ListAssignation from '../components/ListAssignation.vue';
 import ListMouvement from '../components/ListMouvement.vue';
+import ListStock from '../components/ListStock.vue';
 
 const currentview = ref(null)
 
 const showmap = {
     A : ListMouvement,
-    B : ListAssignation
+    B : ListAssignation,
+    C : ListStock
 }
 
 currentview.value = showmap["A"]

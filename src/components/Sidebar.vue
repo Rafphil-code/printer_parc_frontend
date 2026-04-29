@@ -15,8 +15,8 @@
         class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-gray-300 hover:bg-gray-700 hover:text-white transition-colors"
         active-class="bg-blue-500 text-white"
       >
-        <span>{{ item.icon }}</span>
         <span>{{ item.label }}</span>
+        <font-awesome-icon :icon="item.icon" />
       </RouterLink>
     </nav>
 
@@ -25,11 +25,11 @@
 
 <script setup>
 const menu = [
-  { path: '/dashboard',              icon: '', label: 'Tableau de bord' },
-  { path: '/printers',   icon: '', label: 'Imprimantes' },
-  { path: '/alerts',       icon: '', label: 'Alertes' },
-  { path: '/stock',         icon: '', label: 'Stock et Mouvements' },
-  { path: '/reports',      icon: '', label: 'Usage Reports' },
+  { path: '/dashboard',              icon: 'chart-column', label: 'Tableau de bord' },
+  { path: '/printers',   icon: 'print', label: 'Imprimantes' },
+  { path: '/alerts',       icon: 'triangle-exclamation', label: 'Alertes' },
+  { path: '/stock',         icon: 'arrow-right-arrow-left', label: 'Stock et Mouvements' },
+  { path: '/reports',      icon: 'file-lines', label: 'Usage Reports' },
   { path: '/settings',      icon: '', label: 'Réglages' },
   { path: '/profil',        icon: '', label: 'Profil' },
 ]

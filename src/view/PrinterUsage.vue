@@ -29,7 +29,7 @@
             </div>
             <button @click="launchrequest" class="rounded-lg font-semibold bg-green-500 hover:bg-green-800 cursor-pointer text-white p-2">Lancer la Requête</button>
         </div>
-        <div id="table" class="justify-center items-center flex flex-col w-full p-6 mx-auto">
+        <div  id="table" class="justify-center items-center flex flex-col w-full p-6 mx-auto">
             <table class="table-auto w-full border-collapse">
                 <thead>
                     <th class="border border-gray-300 p-2 bg-indigo-100">Imrpimante</th>
@@ -43,8 +43,7 @@
                         <td class="border border-gray-300 p-2 text-center font-semibold"> {{ el.printed_count }} </td>
                         <td class="border border-gray-300 p-2 text-center font-semibold">
                             <div class="flex flex-col text-left">
-                                <p :class="{'text-blue-500': key.includes('Cyan'), 'text-yellow-500': key.includes('Yellow'), 'text-black-500': key.includes('Black'), 'text-red-700': key.includes('Magenta')}"
-                                 v-for="(value, key) in el.uses"> {{ key }} : {{ value }} % </p>
+                                <p :class="{'text-blue-500': key.includes('Cyan'), 'text-yellow-500': key.includes('Yellow'), 'text-black-500': key.includes('Black'), 'text-red-700': key.includes('Magenta')}" v-for="(value, key) in el.uses"> {{ key }} : {{ value }} % </p>
                             </div>
                         </td>
                         <td class="border border-gray-300 p-2 text-center font-semibold"> {{ el.date_check }} </td>
@@ -52,6 +51,7 @@
                 </tbody>
             </table>
         </div>
+        
     </div>
 
 </template>
@@ -62,8 +62,8 @@ import { getStats } from '../api/stats';
 const stats = ref()
 
 const filter_criterias = reactive({
-    "date_start" : "2026-03-03",
-    "date_end" : "2026-03-09",
+    "date_start" : "2026-04-28",
+    "date_end" : "2026-04-28",
     "order_by" : "",
     "printer_name" : ""
 }
@@ -87,7 +87,7 @@ const filters = {
 
 watch(
     () => stats.value, (newcriterias) => {
-        //console.log(newcriterias.value)
+        
     },
     {deep:true}
 )
@@ -97,7 +97,7 @@ onMounted(
     async () => {
         const statistics = await getStats(filter_criterias.date_start, filter_criterias.date_end, filter_criterias.order_by, filter_criterias.printer_name)
         stats.value = statistics
-        console.log(stats)
+        console.log(statistics)
     }
 )
 
@@ -108,7 +108,7 @@ const show_some_filter = (ele) => {
 const launchrequest = async () => {
     const statistics = await getStats(filter_criterias.date_start, filter_criterias.date_end, filter_criterias.order_by, filter_criterias.printer_name)
     stats.value = statistics
-    console.log(stats)
+    
 }
 
 </script>
